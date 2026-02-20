@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EU DAC Directive Viewer — Consolidated 2011/16/EU</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <nav id="sidebar">
+      <div id="sidebar-header">
+        <h1>DAC Directive</h1>
+        <p class="subtitle">Council Directive 2011/16/EU</p>
+        <p class="meta">Consolidated 01.01.2024</p>
+      </div>
+
+      <div id="dac-filters">
+        <h3>Filter by DAC</h3>
+        <div id="filter-buttons"></div>
+        <div class="filter-actions">
+          <button id="btn-show-all" class="filter-action-btn">Show all</button>
+          <button id="btn-norway-relevant" class="filter-action-btn" title="Show DAC1, DAC3, DAC6 (and DAC2 for context)">Norway relevant</button>
+        </div>
+      </div>
+
+      <div id="search-container">
+        <input type="text" id="search-input" placeholder="Search directive text..." />
+        <div id="search-results-count"></div>
+      </div>
+
+      <div id="toc">
+        <h3>Table of Contents</h3>
+        <div id="toc-tree"></div>
+      </div>
+    </nav>
+
+    <main id="content">
+      <div id="content-header">
+        <div id="breadcrumb"></div>
+        <div id="toolbar">
+          <button id="btn-expand-all" title="Expand all sections">Expand all</button>
+          <button id="btn-collapse-all" title="Collapse all sections">Collapse all</button>
+          <label id="provenance-toggle">
+            <input type="checkbox" id="show-provenance" checked>
+            Show DAC provenance
+          </label>
+        </div>
+      </div>
+      <div id="directive-content">
+        <div id="loading">Loading directive data...</div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

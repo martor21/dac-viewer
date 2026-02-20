@@ -1,0 +1,701 @@
+{
+  "meta": {
+    "title": "Council Directive 2011/16/EU",
+    "subtitle": "on administrative cooperation in the field of taxation and repealing Directive 77/799/EEC",
+    "consolidatedDate": "2024-01-01",
+    "consolidatedVersion": "007.001",
+    "generatedAt": "2026-02-20T12:22:33.303Z",
+    "disclaimer": "This text is meant purely as a documentation tool and has no legal effect. The authentic versions are those published in the Official Journal of the European Union."
+  },
+  "amendments": {
+    "32011L0016": {
+      "mCode": "B",
+      "dac": "DAC1",
+      "directive": "2011/16/EU",
+      "name": "Base Directive",
+      "date": "2011-02-15",
+      "subject": "Administrative cooperation in taxation"
+    },
+    "32014L0107": {
+      "mCode": "M1",
+      "dac": "DAC2",
+      "directive": "2014/107/EU",
+      "name": "Financial Account Information (CRS)",
+      "date": "2014-12-09",
+      "subject": "Mandatory automatic exchange — financial accounts"
+    },
+    "32015L2376": {
+      "mCode": "M2",
+      "dac": "DAC3",
+      "directive": "(EU) 2015/2376",
+      "name": "Tax Rulings & APAs",
+      "date": "2015-12-08",
+      "subject": "Advance cross-border rulings and advance pricing arrangements"
+    },
+    "32016L0881": {
+      "mCode": "M3",
+      "dac": "DAC4",
+      "directive": "(EU) 2016/881",
+      "name": "Country-by-Country Reporting",
+      "date": "2016-05-25",
+      "subject": "Country-by-country reporting for MNE groups"
+    },
+    "32016L2258": {
+      "mCode": "M4",
+      "dac": "DAC5",
+      "directive": "(EU) 2016/2258",
+      "name": "Access to AML Information",
+      "date": "2016-12-06",
+      "subject": "Tax authority access to anti-money-laundering information"
+    },
+    "32018L0822": {
+      "mCode": "M5",
+      "dac": "DAC6",
+      "directive": "(EU) 2018/822",
+      "name": "Mandatory Disclosure Rules",
+      "date": "2018-05-25",
+      "subject": "Reportable cross-border arrangements (hallmarks)"
+    },
+    "32020L0876": {
+      "mCode": "M6",
+      "dac": "COVID",
+      "directive": "(EU) 2020/876",
+      "name": "COVID-19 Deferral",
+      "date": "2020-06-24",
+      "subject": "Deferral of DAC6 deadlines due to COVID-19"
+    },
+    "32021L0514": {
+      "mCode": "M7",
+      "dac": "DAC7",
+      "directive": "(EU) 2021/514",
+      "name": "Digital Platforms",
+      "date": "2021-03-22",
+      "subject": "Reporting by digital platform operators"
+    }
+  },
+  "mCodeMap": {
+    "B": {
+      "celex": "32011L0016",
+      "dac": "DAC1"
+    },
+    "M1": {
+      "celex": "32014L0107",
+      "dac": "DAC2"
+    },
+    "M2": {
+      "celex": "32015L2376",
+      "dac": "DAC3"
+    },
+    "M3": {
+      "celex": "32016L0881",
+      "dac": "DAC4"
+    },
+    "M4": {
+      "celex": "32016L2258",
+      "dac": "DAC5"
+    },
+    "M5": {
+      "celex": "32018L0822",
+      "dac": "DAC6"
+    },
+    "M6": {
+      "celex": "32020L0876",
+      "dac": "COVID"
+    },
+    "M7": {
+      "celex": "32021L0514",
+      "dac": "DAC7"
+    }
+  },
+  "chapters": [
+    {
+      "id": "cpt_I",
+      "number": "I",
+      "title": "CHAPTER I",
+      "subtitle": "GENERAL PROVISIONS",
+      "sections": [],
+      "articles": [
+        {
+          "id": "art_1",
+          "number": "1",
+          "title": "Article 1",
+          "subtitle": "Subject matter",
+          "sources": [
+            "DAC1"
+          ]
+        },
+        {
+          "id": "art_2",
+          "number": "2",
+          "title": "Article 2",
+          "subtitle": "Scope",
+          "sources": [
+            "DAC1"
+          ]
+        },
+        {
+          "id": "art_3",
+          "number": "3",
+          "title": "Article 3",
+          "subtitle": "Definitions",
+          "sources": [
+            "DAC4",
+            "DAC7",
+            "DAC1",
+            "DAC3",
+            "DAC6"
+          ]
+        },
+        {
+          "id": "art_4",
+          "number": "4",
+          "title": "Article 4",
+          "subtitle": "Organisation",
+          "sources": [
+            "DAC1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cpt_II",
+      "number": "II",
+      "title": "CHAPTER II",
+      "subtitle": "EXCHANGE OF INFORMATION",
+      "sections": [
+        {
+          "id": "cpt_II.sct_I",
+          "title": "SECTION I",
+          "subtitle": "Exchange of information on request",
+          "articles": [
+            {
+              "id": "art_5",
+              "number": "5",
+              "title": "Article 5",
+              "subtitle": "Procedure for the exchange of information on request",
+              "sources": [
+                "DAC1"
+              ]
+            },
+            {
+              "id": "art_5a",
+              "number": "5a",
+              "title": "Article 5a",
+              "subtitle": "Foreseeable relevance",
+              "sources": [
+                "DAC7"
+              ]
+            },
+            {
+              "id": "art_6",
+              "number": "6",
+              "title": "Article 6",
+              "subtitle": "Administrative enquiries",
+              "sources": [
+                "DAC7",
+                "DAC1"
+              ]
+            },
+            {
+              "id": "art_7",
+              "number": "7",
+              "title": "Article 7",
+              "subtitle": "Time limits",
+              "sources": [
+                "DAC7",
+                "DAC1"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cpt_II.sct_II",
+          "title": "SECTION II",
+          "subtitle": "Mandatory automatic exchange of information",
+          "articles": [
+            {
+              "id": "art_8",
+              "number": "8",
+              "title": "Article 8",
+              "subtitle": "Scope and conditions of mandatory automatic exchange of information",
+              "sources": [
+                "DAC7",
+                "DAC2",
+                "DAC3",
+                "DAC1"
+              ]
+            },
+            {
+              "id": "art_8a",
+              "number": "8a",
+              "title": "Article 8a",
+              "subtitle": "Scope and conditions of mandatory automatic exchange of information on advance cross-border rulings and advance pricing arrangements",
+              "sources": [
+                "DAC7",
+                "DAC3"
+              ]
+            },
+            {
+              "id": "art_8aa",
+              "number": "8aa",
+              "title": "Article 8aa",
+              "subtitle": "Scope and conditions of mandatory automatic exchange of information on the country-by-country report",
+              "sources": [
+                "DAC4"
+              ]
+            },
+            {
+              "id": "art_8ab",
+              "number": "8ab",
+              "title": "Article 8ab",
+              "subtitle": "Scope and conditions of mandatory automatic exchange of information on reportable cross-border arrangements",
+              "sources": [
+                "DAC6"
+              ]
+            },
+            {
+              "id": "art_8ac",
+              "number": "8ac",
+              "title": "Article 8ac",
+              "subtitle": "Scope and conditions of mandatory automatic exchange of information reported by Platform Operators",
+              "sources": [
+                "DAC7"
+              ]
+            },
+            {
+              "id": "art_8b",
+              "number": "8b",
+              "title": "Article 8b",
+              "subtitle": "Statistics on automatic exchanges",
+              "sources": [
+                "DAC7",
+                "DAC3"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cpt_II.sct_III",
+          "title": "SECTION III",
+          "subtitle": "Spontaneous exchange of information",
+          "articles": [
+            {
+              "id": "art_9",
+              "number": "9",
+              "title": "Article 9",
+              "subtitle": "Scope and conditions of spontaneous exchange of information",
+              "sources": [
+                "DAC1"
+              ]
+            },
+            {
+              "id": "art_10",
+              "number": "10",
+              "title": "Article 10",
+              "subtitle": "Time limits",
+              "sources": [
+                "DAC1"
+              ]
+            }
+          ]
+        }
+      ],
+      "articles": []
+    },
+    {
+      "id": "cpt_III",
+      "number": "III",
+      "title": "CHAPTER III",
+      "subtitle": "OTHER FORMS OF ADMINISTRATIVE COOPERATION",
+      "sections": [
+        {
+          "id": "cpt_III.sct_I",
+          "title": "SECTION I",
+          "subtitle": "Presence in administrative offices and participation in administrative enquiries",
+          "articles": [
+            {
+              "id": "art_11",
+              "number": "11",
+              "title": "Article 11",
+              "subtitle": "Scope and conditions",
+              "sources": [
+                "DAC7",
+                "DAC1"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cpt_III.sct_II",
+          "title": "SECTION II",
+          "subtitle": "Simultaneous controls",
+          "articles": [
+            {
+              "id": "art_12",
+              "number": "12",
+              "title": "Article 12",
+              "subtitle": "Simultaneous controls",
+              "sources": [
+                "DAC7",
+                "DAC1"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cpt_III.sct_IIA",
+          "title": "SECTION IIa",
+          "subtitle": "Joint audits",
+          "articles": [
+            {
+              "id": "art_12a",
+              "number": "12a",
+              "title": "Article 12a",
+              "subtitle": "Joint audits",
+              "sources": [
+                "DAC1"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cpt_III.sct_III",
+          "title": "SECTION III",
+          "subtitle": "Administrative notification",
+          "articles": [
+            {
+              "id": "art_13",
+              "number": "13",
+              "title": "Article 13",
+              "subtitle": "Request for notification",
+              "sources": [
+                "DAC1"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cpt_III.sct_IV",
+          "title": "SECTION IV",
+          "subtitle": "Feedback",
+          "articles": [
+            {
+              "id": "art_14",
+              "number": "14",
+              "title": "Article 14",
+              "subtitle": "Conditions",
+              "sources": [
+                "DAC1"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cpt_III.sct_V",
+          "title": "SECTION V",
+          "subtitle": "Sharing of best practices and experience",
+          "articles": [
+            {
+              "id": "art_15",
+              "number": "15",
+              "title": "Article 15",
+              "subtitle": "Scope and conditions",
+              "sources": [
+                "DAC1"
+              ]
+            }
+          ]
+        }
+      ],
+      "articles": []
+    },
+    {
+      "id": "cpt_IV",
+      "number": "IV",
+      "title": "CHAPTER IV",
+      "subtitle": "CONDITIONS GOVERNING ADMINISTRATIVE COOPERATION",
+      "sections": [],
+      "articles": [
+        {
+          "id": "art_16",
+          "number": "16",
+          "title": "Article 16",
+          "subtitle": "Disclosure of information and documents",
+          "sources": [
+            "DAC7",
+            "DAC1",
+            "DAC4"
+          ]
+        },
+        {
+          "id": "art_17",
+          "number": "17",
+          "title": "Article 17",
+          "subtitle": "Limits",
+          "sources": [
+            "DAC1"
+          ]
+        },
+        {
+          "id": "art_18",
+          "number": "18",
+          "title": "Article 18",
+          "subtitle": "Obligations",
+          "sources": [
+            "DAC1"
+          ]
+        },
+        {
+          "id": "art_19",
+          "number": "19",
+          "title": "Article 19",
+          "subtitle": "Extension of wider cooperation provided to a third country",
+          "sources": [
+            "DAC1"
+          ]
+        },
+        {
+          "id": "art_20",
+          "number": "20",
+          "title": "Article 20",
+          "subtitle": "Standard forms and computerised formats",
+          "sources": [
+            "DAC7",
+            "DAC1",
+            "DAC6",
+            "DAC4"
+          ]
+        },
+        {
+          "id": "art_21",
+          "number": "21",
+          "title": "Article 21",
+          "subtitle": "Practical arrangements",
+          "sources": [
+            "DAC2",
+            "DAC3",
+            "DAC1",
+            "DAC6",
+            "DAC4",
+            "DAC7"
+          ]
+        },
+        {
+          "id": "art_22",
+          "number": "22",
+          "title": "Article 22",
+          "subtitle": "Specific obligations",
+          "sources": [
+            "DAC7",
+            "DAC1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cpt_V",
+      "number": "V",
+      "title": "CHAPTER V",
+      "subtitle": "RELATIONS WITH THE COMMISSION",
+      "sections": [],
+      "articles": [
+        {
+          "id": "art_23",
+          "number": "23",
+          "title": "Article 23",
+          "subtitle": "Evaluation",
+          "sources": [
+            "DAC6",
+            "DAC1",
+            "DAC3"
+          ]
+        },
+        {
+          "id": "art_23a",
+          "number": "23a",
+          "title": "Article 23a",
+          "subtitle": "Confidentiality of information",
+          "sources": [
+            "DAC7",
+            "DAC3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cpt_VI",
+      "number": "VI",
+      "title": "CHAPTER VI",
+      "subtitle": "RELATIONS WITH THIRD COUNTRIES",
+      "sections": [],
+      "articles": [
+        {
+          "id": "art_24",
+          "number": "24",
+          "title": "Article 24",
+          "subtitle": "Exchange of information with third countries",
+          "sources": [
+            "DAC1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cpt_VII",
+      "number": "VII",
+      "title": "CHAPTER VII",
+      "subtitle": "GENERAL AND FINAL PROVISIONS",
+      "sections": [],
+      "articles": [
+        {
+          "id": "art_25",
+          "number": "25",
+          "title": "Article 25",
+          "subtitle": "Data protection",
+          "sources": [
+            "DAC7"
+          ]
+        },
+        {
+          "id": "art_25a",
+          "number": "25a",
+          "title": "Article 25a",
+          "subtitle": "Penalties",
+          "sources": [
+            "DAC1"
+          ]
+        },
+        {
+          "id": "art_26",
+          "number": "26",
+          "title": "Article 26",
+          "subtitle": "Committee procedure",
+          "sources": [
+            "DAC4"
+          ]
+        },
+        {
+          "id": "art_27",
+          "number": "27",
+          "title": "Article 27",
+          "subtitle": "Reporting",
+          "sources": [
+            "DAC6"
+          ]
+        },
+        {
+          "id": "art_27a",
+          "number": "27a",
+          "title": "Article 27a",
+          "subtitle": "Optional deferral of time limits because of the COVID-19 pandemic",
+          "sources": [
+            "COVID"
+          ]
+        },
+        {
+          "id": "art_27b",
+          "number": "27b",
+          "title": "Article 27b",
+          "subtitle": "Extension of the period of deferral",
+          "sources": [
+            "DAC1"
+          ]
+        },
+        {
+          "id": "art_28",
+          "number": "28",
+          "title": "Article 28",
+          "subtitle": "Repeal of Directive 77/799/EEC",
+          "sources": [
+            "DAC1"
+          ]
+        },
+        {
+          "id": "art_29",
+          "number": "29",
+          "title": "Article 29",
+          "subtitle": "Transposition",
+          "sources": [
+            "DAC1"
+          ]
+        },
+        {
+          "id": "art_30",
+          "number": "30",
+          "title": "Article 30",
+          "subtitle": "Entry into force",
+          "sources": [
+            "DAC1"
+          ]
+        },
+        {
+          "id": "art_31",
+          "number": "31",
+          "title": "Article 31",
+          "subtitle": "Addressees",
+          "sources": [
+            "DAC1"
+          ]
+        }
+      ]
+    }
+  ],
+  "annexes": [
+    {
+      "id": "anx_I",
+      "number": "I",
+      "title": "ANNEX I",
+      "subtitle": "REPORTING AND DUE DILIGENCE RULES FOR FINANCIAL ACCOUNT INFORMATION",
+      "dac": "DAC2",
+      "sources": [
+        "DAC2"
+      ]
+    },
+    {
+      "id": "anx_II",
+      "number": "II",
+      "title": "ANNEX II",
+      "subtitle": "COMPLEMENTARY REPORTING AND DUE DILIGENCE RULES FOR FINANCIAL ACCOUNT INFORMATION",
+      "dac": "DAC2",
+      "sources": [
+        "DAC2"
+      ]
+    },
+    {
+      "id": "anx_III",
+      "number": "III",
+      "title": "ANNEX III",
+      "subtitle": "Filing Rules for Groups of Multinational Enterprises",
+      "dac": "DAC4",
+      "sources": [
+        "DAC4"
+      ]
+    },
+    {
+      "id": "anx_IV",
+      "number": "IV",
+      "title": "ANNEX IV",
+      "subtitle": "Hallmarks",
+      "dac": "DAC6",
+      "sources": [
+        "DAC6"
+      ]
+    },
+    {
+      "id": "anx_V",
+      "number": "V",
+      "title": "ANNEX V",
+      "subtitle": "DUE DILIGENCE PROCEDURES, REPORTING REQUIREMENTS AND OTHER RULES FOR PLATFORM OPERATORS",
+      "dac": "DAC7",
+      "sources": [
+        "DAC7"
+      ]
+    }
+  ],
+  "stats": {
+    "totalArticles": 42,
+    "totalAnnexes": 5,
+    "totalChapters": 7,
+    "totalFootnotes": 8
+  }
+}

@@ -1,0 +1,1048 @@
+/* ═══════════════════════════════════════════════════════════════════
+   DAC Directive Viewer — Styles
+   For Norwegian Tax Authority legal experts
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── Reset & Base ─────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* DAC colors — carefully chosen for readability and distinction */
+  --dac1-color: #111827;    /* Black — base/original text */
+  --dac1-bg: transparent;
+  --dac2-color: #1e40af;    /* Blue — financial accounts */
+  --dac2-bg: #eff6ff;
+  --dac3-color: #7c3aed;    /* Purple — tax rulings */
+  --dac3-bg: #f5f3ff;
+  --dac4-color: #0d9488;    /* Teal — CbCR */
+  --dac4-bg: #f0fdfa;
+  --dac5-color: #b45309;    /* Amber — AML access */
+  --dac5-bg: #fffbeb;
+  --dac6-color: #dc2626;    /* Red — MDR/hallmarks */
+  --dac6-bg: #fef2f2;
+  --dac7-color: #ea580c;    /* Orange — platforms */
+  --dac7-bg: #fff7ed;
+  --covid-color: #0369a1;   /* Sky blue — COVID deferral */
+  --covid-bg: #f0f9ff;
+
+  --sidebar-width: 340px;
+  --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-legal: 'Georgia', 'Times New Roman', serif;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  /* Disable browser's native scroll anchoring — we do it manually in updateFilters() */
+  overflow-anchor: none;
+}
+
+body {
+  font-family: var(--font-body);
+  color: #1f2937;
+  background: #f3f4f6;
+  line-height: 1.6;
+}
+
+/* ─── Layout ───────────────────────────────────────────────────── */
+#app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ─── Sidebar ──────────────────────────────────────────────────── */
+#sidebar {
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-width);
+  background: #1f2937;
+  color: #e5e7eb;
+  padding: 0;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+#sidebar-header {
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid #374151;
+  flex-shrink: 0;
+}
+
+#sidebar-header h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+
+#sidebar-header .subtitle {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  line-height: 1.4;
+}
+
+#sidebar-header .meta {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+/* ─── DAC Filters ──────────────────────────────────────────────── */
+#dac-filters {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #374151;
+  flex-shrink: 0;
+}
+
+#dac-filters h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #9ca3af;
+  margin-bottom: 0.5rem;
+}
+
+#filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.dac-filter-btn {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border: 2px solid;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+  background: transparent;
+}
+
+.dac-filter-btn.active {
+  color: #fff !important;
+}
+
+.dac-filter-btn[data-dac="DAC1"] { color: #6b7280; border-color: #111827; }
+.dac-filter-btn[data-dac="DAC1"].active { background: #111827; }
+.dac-filter-btn[data-dac="DAC2"] { color: #60a5fa; border-color: #2563eb; }
+.dac-filter-btn[data-dac="DAC2"].active { background: #2563eb; }
+.dac-filter-btn[data-dac="DAC3"] { color: #a78bfa; border-color: #7c3aed; }
+.dac-filter-btn[data-dac="DAC3"].active { background: #7c3aed; }
+.dac-filter-btn[data-dac="DAC4"] { color: #2dd4bf; border-color: #0d9488; }
+.dac-filter-btn[data-dac="DAC4"].active { background: #0d9488; }
+.dac-filter-btn[data-dac="DAC5"] { color: #fbbf24; border-color: #b45309; }
+.dac-filter-btn[data-dac="DAC5"].active { background: #b45309; }
+.dac-filter-btn[data-dac="DAC6"] { color: #f87171; border-color: #dc2626; }
+.dac-filter-btn[data-dac="DAC6"].active { background: #dc2626; }
+.dac-filter-btn[data-dac="DAC7"] { color: #fb923c; border-color: #ea580c; }
+.dac-filter-btn[data-dac="DAC7"].active { background: #ea580c; }
+.dac-filter-btn[data-dac="COVID"] { color: #38bdf8; border-color: #0369a1; }
+.dac-filter-btn[data-dac="COVID"].active { background: #0369a1; }
+
+.filter-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.filter-action-btn {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #4b5563;
+  border-radius: 3px;
+  background: transparent;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.filter-action-btn:hover {
+  background: #374151;
+  color: #fff;
+}
+
+/* ─── Search ───────────────────────────────────────────────────── */
+#search-container {
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid #374151;
+  flex-shrink: 0;
+}
+
+#search-input {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #4b5563;
+  border-radius: 4px;
+  background: #111827;
+  color: #e5e7eb;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+#search-input:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2);
+}
+
+#search-input::placeholder {
+  color: #6b7280;
+}
+
+#search-results-count {
+  font-size: 0.7rem;
+  color: #9ca3af;
+  margin-top: 0.35rem;
+  min-height: 1rem;
+}
+
+/* ─── TOC ──────────────────────────────────────────────────────── */
+#toc {
+  padding: 0.75rem 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+#toc h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #9ca3af;
+  padding: 0 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.toc-chapter {
+  margin-bottom: 0.25rem;
+}
+
+.toc-chapter-title {
+  display: block;
+  padding: 0.3rem 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #d1d5db;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.toc-chapter-title:hover {
+  background: #374151;
+}
+
+.toc-section-title {
+  display: block;
+  padding: 0.2rem 1.25rem 0.2rem 1.75rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.toc-article {
+  display: flex;
+  flex-direction: column;
+  padding: 0.3rem 1rem 0.3rem 2rem;
+  font-size: 0.78rem;
+  color: #d1d5db;
+  cursor: pointer;
+  transition: background 0.1s;
+  text-decoration: none;
+  gap: 1px;
+}
+
+.toc-article:hover {
+  background: #374151;
+}
+
+.toc-article.active {
+  background: #374151;
+  border-left: 3px solid #60a5fa;
+  padding-left: calc(2rem - 3px);
+}
+
+/* Line 1: article number + DAC badges */
+.toc-article-line1 {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.toc-article-num {
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.toc-dac-badges {
+  display: flex;
+  gap: 3px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.toc-dac-badge {
+  font-size: 0.55rem;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 2px;
+  line-height: 1.4;
+}
+
+/* Line 2: subtitle */
+.toc-article-name {
+  color: #9ca3af;
+  font-size: 0.72rem;
+  line-height: 1.3;
+  /* allow wrapping for longer subtitles */
+}
+
+.toc-annex {
+  display: flex;
+  flex-direction: column;
+  padding: 0.35rem 1rem 0.35rem 1.25rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #d1d5db;
+  cursor: pointer;
+  transition: background 0.1s;
+  text-decoration: none;
+  gap: 1px;
+}
+
+.toc-annex:hover {
+  background: #374151;
+}
+
+.toc-hidden {
+  display: none;
+}
+
+/* ─── Main Content ─────────────────────────────────────────────── */
+main#content {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  min-height: 100vh;
+  background: #fff;
+}
+
+#content-header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 50;
+}
+
+#toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+#toolbar button {
+  font-size: 0.78rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  background: #fff;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+#toolbar button:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+#provenance-toggle {
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  color: #6b7280;
+  user-select: none;
+}
+
+#breadcrumb {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+/* ─── Directive Content ────────────────────────────────────────── */
+#directive-content {
+  padding: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+#loading {
+  text-align: center;
+  padding: 4rem;
+  color: #9ca3af;
+  font-size: 1.1rem;
+}
+
+/* Chapter headings */
+.chapter-block {
+  margin-bottom: 2rem;
+}
+
+.chapter-heading {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111827;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 1rem 0 0.25rem;
+  border-top: 3px solid #111827;
+  margin-top: 2rem;
+}
+
+.chapter-heading:first-child {
+  margin-top: 0;
+}
+
+.chapter-subtitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 1rem;
+}
+
+/* Section headings */
+.section-heading {
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #6b7280;
+  padding: 0.75rem 0 0.25rem;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 1.5rem;
+}
+
+.section-subtitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #374151;
+  margin-bottom: 0.75rem;
+}
+
+/* Article blocks */
+.article-block {
+  margin-bottom: 1.5rem;
+  border-left: 3px solid #e5e7eb;
+  padding-left: 1rem;
+  transition: all 0.2s;
+}
+
+.article-block[data-primary-dac="DAC1"] { border-left-color: var(--dac1-color); }
+.article-block[data-primary-dac="DAC2"] { border-left-color: var(--dac2-color); }
+.article-block[data-primary-dac="DAC3"] { border-left-color: var(--dac3-color); }
+.article-block[data-primary-dac="DAC4"] { border-left-color: var(--dac4-color); }
+.article-block[data-primary-dac="DAC5"] { border-left-color: var(--dac5-color); }
+.article-block[data-primary-dac="DAC6"] { border-left-color: var(--dac6-color); }
+.article-block[data-primary-dac="DAC7"] { border-left-color: var(--dac7-color); }
+.article-block[data-primary-dac="COVID"] { border-left-color: var(--covid-color); }
+
+.article-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  user-select: none;
+}
+
+.article-header:hover {
+  background: #f9fafb;
+  margin: 0 -0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.article-title {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.article-subtitle {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.article-dac-badges {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.dac-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 3px;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.dac-badge-DAC1 { background: #e5e7eb; color: #111827; }
+.dac-badge-DAC2 { background: #dbeafe; color: #2563eb; }
+.dac-badge-DAC3 { background: #ede9fe; color: #7c3aed; }
+.dac-badge-DAC4 { background: #ccfbf1; color: #0d9488; }
+.dac-badge-DAC5 { background: #fef3c7; color: #b45309; }
+.dac-badge-DAC6 { background: #fee2e2; color: #dc2626; }
+.dac-badge-DAC7 { background: #ffedd5; color: #ea580c; }
+.dac-badge-COVID { background: #e0f2fe; color: #0369a1; }
+
+.article-collapse-icon {
+  font-size: 0.7rem;
+  color: #9ca3af;
+  transition: transform 0.15s;
+  flex-shrink: 0;
+}
+
+.article-block.collapsed .article-collapse-icon {
+  transform: rotate(-90deg);
+}
+
+.article-body {
+  padding-top: 0.5rem;
+}
+
+.article-block.collapsed .article-body {
+  display: none;
+}
+
+/* ─── Legislative text rendering ───────────────────────────────── */
+/* These styles render the EUR-Lex HTML content classes */
+.article-body .norm,
+.article-body .list {
+  font-family: var(--font-legal);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #1f2937;
+  margin-bottom: 0.35rem;
+}
+
+.article-body p.norm {
+  margin-bottom: 0.5rem;
+}
+
+.article-body p.list {
+  margin-bottom: 0.5rem;
+}
+
+.article-body .title-article-norm {
+  display: none; /* Already rendered as article header */
+}
+
+.article-body .stitle-article-norm {
+  display: none; /* Already rendered as article subtitle */
+}
+
+/* Numbered paragraph layout from EUR-Lex */
+.article-body .grid-container.grid-list {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.article-body .grid-list-column-1,
+.article-body .list.grid-list-column-1 {
+  font-family: var(--font-legal);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6b7280;
+  white-space: nowrap;
+  padding-top: 0;
+}
+
+.article-body .grid-list-column-2 {
+  min-width: 0;
+}
+
+.article-body .no-parag {
+  font-family: var(--font-legal);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.article-body .boldface {
+  font-weight: 700;
+}
+
+.article-body .italics {
+  font-style: italic;
+}
+
+.article-body .superscript {
+  vertical-align: super;
+  font-size: 0.7em;
+}
+
+/* Table styling for legislative tables */
+.article-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.5rem 0;
+  font-family: var(--font-legal);
+  font-size: 0.85rem;
+}
+
+.article-body td, .article-body th {
+  padding: 0.3rem 0.5rem;
+  vertical-align: top;
+}
+
+/* ─── DAC Zones and Provenance ─────────────────────────────────── */
+/* Text is wrapped in .dac-zone divs, each attributed to the DAC
+   that introduced it. The zone has a colored left border and a
+   small DAC number label in the left margin. Zones can be collapsed
+   when their DAC is filtered out. */
+
+.article-body,
+.annex-body {
+  position: relative;
+  padding-left: 2.2rem; /* room for margin labels */
+}
+
+/* ─── Zone wrapper ─────────────────────────────────────────────── */
+.dac-zone {
+  position: relative;
+  border-left: 3px solid transparent;
+  margin-left: -2.2rem;
+  padding-left: calc(2.2rem - 3px); /* minus border width */
+  transition: opacity 0.2s, max-height 0.3s;
+}
+
+/* Per-DAC zone border colors
+   DAC1 = base text, no visible border — only amendments get colored lines */
+.dac-zone[data-dac="DAC1"] { border-left-color: transparent; }
+.dac-zone[data-dac="DAC2"] { border-left-color: #2563eb; }
+.dac-zone[data-dac="DAC3"] { border-left-color: #8b5cf6; }
+.dac-zone[data-dac="DAC4"] { border-left-color: #14b8a6; }
+.dac-zone[data-dac="DAC5"] { border-left-color: #d97706; }
+.dac-zone[data-dac="DAC6"] { border-left-color: #ef4444; }
+.dac-zone[data-dac="DAC7"] { border-left-color: #f97316; }
+.dac-zone[data-dac="COVID"] { border-left-color: #0284c7; }
+.dac-zone[data-dac="Corrigendum"] { border-left-color: #d97706; }
+
+/* Deleted zone — dashed red border */
+.dac-zone[data-deleted="true"] {
+  border-left-color: #dc2626;
+  border-left-style: dashed;
+  opacity: 0.55;
+}
+
+/* ─── Provenance marker (label inside zone) ────────────────────── */
+.dac-provenance-marker {
+  display: block;
+  height: 0;
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+  border: none;
+  position: relative;
+  font-family: var(--font-body);
+}
+
+.dac-provenance-marker .dac-label {
+  /* Small tag in the left margin */
+  position: absolute;
+  left: calc(-2.2rem + 3px); /* align with zone padding start */
+  top: 0.2rem;
+  transform: translateX(-100%);
+  padding: 1px 5px;
+  border-radius: 2px;
+  font-weight: 800;
+  font-size: 0.58rem;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  text-align: center;
+  white-space: nowrap;
+  cursor: default;
+  z-index: 1;
+}
+
+.dac-provenance-marker .dac-operation {
+  display: none; /* shown only in tooltip */
+}
+
+/* Tooltip on hover */
+.dac-provenance-marker .dac-label:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: calc(100% + 6px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: #1f2937;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  z-index: 10;
+  pointer-events: none;
+  text-transform: capitalize;
+}
+
+/* Per-DAC label colors — DAC1 label is hidden (base text needs no annotation) */
+.dac-provenance-marker[data-dac="DAC1"] .dac-label { display: none; }
+.dac-provenance-marker[data-dac="DAC2"] .dac-label { background: #dbeafe; color: #2563eb; }
+.dac-provenance-marker[data-dac="DAC3"] .dac-label { background: #ede9fe; color: #7c3aed; }
+.dac-provenance-marker[data-dac="DAC4"] .dac-label { background: #ccfbf1; color: #0d9488; }
+.dac-provenance-marker[data-dac="DAC5"] .dac-label { background: #fef3c7; color: #b45309; }
+.dac-provenance-marker[data-dac="DAC6"] .dac-label { background: #fee2e2; color: #dc2626; }
+.dac-provenance-marker[data-dac="DAC7"] .dac-label { background: #ffedd5; color: #ea580c; }
+.dac-provenance-marker[data-dac="COVID"] .dac-label { background: #e0f2fe; color: #0369a1; }
+.dac-provenance-marker[data-dac="Corrigendum"] .dac-label { background: #fef9c3; color: #854d0e; }
+
+/* ─── Hide provenance toggle (master switch) ──────────────────── */
+body.hide-provenance .dac-provenance-marker { display: none; }
+body.hide-provenance .dac-zone { border-left-color: transparent; }
+body.hide-provenance .article-body,
+body.hide-provenance .annex-body { padding-left: 0; }
+body.hide-provenance .dac-zone { margin-left: 0; padding-left: 0; }
+
+/* ─── DAC filtering — collapse zones from filtered-out DACs ───── */
+.dac-zone.dac-zone-hidden {
+  display: none;
+}
+
+/* ─── DAC filtering — dim entire articles with no visible zones ── */
+.article-block.dac-filtered-out {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.article-block.dac-filtered-out .article-body {
+  display: none;
+}
+
+/* ─── Annex blocks ─────────────────────────────────────────────── */
+.annex-block {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 3px double #374151;
+}
+
+.annex-heading {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.annex-subtitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.annex-body {
+  /* no overflow:hidden — needed for margin annotations */
+}
+
+.annex-block.collapsed .annex-body {
+  display: none;
+}
+
+/* Annex content — same legal text styles */
+.annex-body .norm,
+.annex-body .list {
+  font-family: var(--font-legal);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: #1f2937;
+  margin-bottom: 0.35rem;
+}
+
+.annex-body p.norm {
+  margin-bottom: 0.5rem;
+}
+
+.annex-body .grid-container.grid-list {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.annex-body .grid-list-column-1,
+.annex-body .list.grid-list-column-1 {
+  font-family: var(--font-legal);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.annex-body .grid-list-column-2 {
+  min-width: 0;
+}
+
+.annex-body .title-annex-1 {
+  display: none; /* Already rendered as annex heading */
+}
+
+.annex-body .title-annex-2 {
+  display: none; /* Already rendered as annex subtitle */
+}
+
+.annex-body .title-gr-seq-level-1 {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 1.25rem 0 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.annex-body .title-gr-seq-level-2 {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #374151;
+  margin: 1rem 0 0.4rem;
+}
+
+.annex-body .title-gr-seq-level-3 {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #4b5563;
+  margin: 0.75rem 0 0.35rem;
+}
+
+.annex-body .boldface {
+  font-weight: 700;
+}
+
+.annex-body .italics {
+  font-style: italic;
+}
+
+.annex-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.5rem 0;
+  font-family: var(--font-legal);
+  font-size: 0.85rem;
+}
+
+.annex-body td, .annex-body th {
+  padding: 0.3rem 0.5rem;
+  vertical-align: top;
+}
+
+/* Annex provenance markers inherit the margin-annotation style from .dac-provenance-marker */
+
+.annex-body .separator-annex {
+  display: none;
+}
+
+/* ─── Search highlights ────────────────────────────────────────── */
+.search-highlight {
+  background: #fde68a;
+  color: #92400e;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.search-highlight.current {
+  background: #f59e0b;
+  color: #fff;
+}
+
+/* ─── Footnotes ────────────────────────────────────────────────── */
+.footnotes-section {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #d1d5db;
+}
+
+.footnotes-section h3 {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 0.75rem;
+}
+
+.footnote-item {
+  font-family: var(--font-legal);
+  font-size: 0.8rem;
+  color: #4b5563;
+  margin-bottom: 0.35rem;
+  line-height: 1.5;
+}
+
+/* ─── Disclaimer ───────────────────────────────────────────────── */
+.disclaimer-banner {
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 2rem;
+  font-size: 0.8rem;
+  color: #92400e;
+  line-height: 1.5;
+}
+
+/* ─── Amendment Legend ──────────────────────────────────────────── */
+.amendment-legend {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 2rem;
+}
+
+.amendment-legend h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.35rem 1.5rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+}
+
+.legend-directive {
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.legend-name {
+  color: #6b7280;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ─── EUR-Lex link cleanup ─────────────────────────────────────── */
+/* EUR-Lex footnote references and cross-references */
+.article-body a, .annex-body a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.article-body a:hover, .annex-body a:hover {
+  text-decoration: underline;
+}
+
+/* Hide EUR-Lex specific elements that don't render well locally */
+.article-body .eli-title {
+  display: none; /* Article subtitle — already shown in our header */
+}
+
+/* Override inline-element display for proper layout */
+.article-body .norm.inline-element,
+.annex-body .norm.inline-element {
+  display: inline;
+}
+
+/* Separator elements */
+.article-body hr.separator-annex,
+.annex-body hr.separator-annex {
+  display: none;
+}
+
+/* ─── Footnote tooltip ─────────────────────────────────────────── */
+.footnote-tooltip {
+  position: fixed;
+  max-width: 420px;
+  padding: 8px 12px;
+  background: #1f2937;
+  color: #f9fafb;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+/* Style footnote reference links */
+.article-body a[href^="#E"],
+.annex-body a[href^="#E"] {
+  text-decoration: none;
+  color: #2563eb;
+  cursor: help;
+}
+
+.article-body a[href^="#E"]:hover,
+.annex-body a[href^="#E"]:hover {
+  text-decoration: underline;
+}
+
+/* ─── Print styles ─────────────────────────────────────────────── */
+@media print {
+  #sidebar { display: none; }
+  main#content { margin-left: 0; }
+  #content-header { display: none; }
+  .article-block { break-inside: avoid; }
+  .dac-provenance-marker { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .dac-badge { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}
+
+/* ─── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.2s;
+  }
+  #sidebar.open {
+    transform: translateX(0);
+  }
+  main#content {
+    margin-left: 0;
+  }
+}
