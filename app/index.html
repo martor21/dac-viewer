@@ -30,6 +30,15 @@
         </div>
       </div>
 
+      <div id="view-controls">
+        <h3>View</h3>
+        <div class="view-controls-row">
+          <button id="btn-expand-all" class="sidebar-btn" title="Expand all sections">Expand all</button>
+          <button id="btn-collapse-all" class="sidebar-btn" title="Collapse all sections">Collapse all</button>
+          <button id="btn-print" class="sidebar-btn" title="Print / Save as PDF">🖨 Print</button>
+        </div>
+      </div>
+
       <div id="search-container">
         <input type="text" id="search-input" placeholder="Search directive text..." />
         <div id="search-results-count"></div>
@@ -43,12 +52,9 @@
 
     <main id="content">
       <div id="content-header">
-        <div id="breadcrumb"></div>
         <div id="toolbar">
           <button id="btn-sidebar-toggle" title="Toggle sidebar" aria-label="Toggle sidebar">☰</button>
-          <button id="btn-expand-all" title="Expand all sections">Expand all</button>
-          <button id="btn-collapse-all" title="Collapse all sections">Collapse all</button>
-          <button id="btn-print" title="Print / Save as PDF">🖨 Print</button>
+          <span id="toolbar-title">DAC Directive Viewer</span>
         </div>
       </div>
       <div id="directive-content">

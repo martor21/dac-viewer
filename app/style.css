@@ -192,6 +192,43 @@ body {
   user-select: none;
 }
 
+/* ─── View controls (sidebar section) ─────────────────────────── */
+#view-controls {
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid #374151;
+  flex-shrink: 0;
+}
+
+#view-controls h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #9ca3af;
+  margin-bottom: 0.5rem;
+}
+
+.view-controls-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.sidebar-btn {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid #4b5563;
+  border-radius: 3px;
+  background: transparent;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.sidebar-btn:hover {
+  background: #374151;
+  color: #fff;
+}
+
 /* ─── Search ───────────────────────────────────────────────────── */
 #search-container {
   padding: 0.75rem 1.25rem;
@@ -363,10 +400,9 @@ main#content {
   top: 0;
   background: #fff;
   border-bottom: 1px solid #e5e7eb;
-  padding: 0.5rem 2rem;
+  padding: 0.35rem 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   z-index: 50;
 }
 
@@ -376,25 +412,22 @@ main#content {
   gap: 0.75rem;
 }
 
-#toolbar button {
-  font-size: 0.78rem;
-  padding: 0.3rem 0.75rem;
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-  background: #fff;
+#toolbar-title {
+  font-size: 0.85rem;
+  font-weight: 600;
   color: #374151;
-  cursor: pointer;
-  transition: all 0.1s;
+  display: none; /* hidden when sidebar is visible */
 }
 
-#toolbar button:hover {
-  background: #f3f4f6;
-  border-color: #9ca3af;
+/* Show title only when sidebar is closed (desktop) or on mobile */
+body.sidebar-closed #toolbar-title {
+  display: inline;
 }
 
-#breadcrumb {
-  font-size: 0.78rem;
-  color: #6b7280;
+@media (max-width: 768px) {
+  #toolbar-title {
+    display: inline;
+  }
 }
 
 /* ─── Directive Content ────────────────────────────────────────── */
