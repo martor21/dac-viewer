@@ -23,6 +23,28 @@
   const ALL_DACS = ['DAC1', 'DAC2', 'DAC3', 'DAC4', 'DAC5', 'DAC6', 'DAC7', 'COVID'];
   const NORWAY_RELEVANT = ['DAC1', 'DAC2', 'DAC3', 'DAC6'];
 
+  // DAC priority order — lower number = higher priority (earlier amendment)
+  // COVID is treated as a late amendment (after DAC6, before DAC7)
+  const DAC_ORDER = ['DAC1', 'DAC2', 'DAC3', 'DAC4', 'DAC5', 'DAC6', 'COVID', 'DAC7'];
+
+  /**
+   * Returns the earliest (lowest-numbered) DAC from a list of sources.
+   * This determines the article-level border colour: an article's left border
+   * should always reflect the DAC that originally introduced it, regardless of
+   * the order the provenance markers happen to appear in the source HTML.
+   */
+  function lowestDac(sources) {
+    if (!sources || sources.length === 0) return 'DAC1';
+    return sources.slice().sort(
+      (a, b) => {
+        const ai = DAC_ORDER.indexOf(a);
+        const bi = DAC_ORDER.indexOf(b);
+        // Unknown DACs (Corrigendum etc.) go last
+        return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+      }
+    )[0];
+  }
+
   // ─── Init ──────────────────────────────────────────────────────
   async function init() {
     try {
@@ -308,10 +330,9 @@
     block.id = article.id;
     block.dataset.sources = JSON.stringify(article.sources);
 
-    // Article border color: black (DAC1) if any DAC1 content exists,
-    // otherwise the DAC that introduced the entire article.
-    const primaryDac = article.sources.includes('DAC1') ? 'DAC1' : article.sources[0];
-    block.dataset.primaryDac = primaryDac;
+    // Article border color: always use the lowest-numbered (earliest) DAC
+    // from the article's sources, regardless of marker order in the document.
+    block.dataset.primaryDac = lowestDac(article.sources);
 
     // Header (clickable to expand/collapse)
     const header = document.createElement('div');
