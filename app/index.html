@@ -20,7 +20,13 @@
         <div id="filter-buttons"></div>
         <div class="filter-actions">
           <button id="btn-show-all" class="filter-action-btn">Show all</button>
-          <button id="btn-norway-relevant" class="filter-action-btn" title="Show DAC1, DAC3, DAC6 (and DAC2 for context)">Norway relevant</button>
+          <button id="btn-norway-relevant" class="filter-action-btn" title="Show DAC1, DAC2, DAC3, DAC6 (Norway relevant). Click again to reset.">Norway relevant</button>
+        </div>
+        <div class="provenance-toggle-row">
+          <label id="provenance-toggle">
+            <input type="checkbox" id="show-provenance" checked>
+            Show DAC provenance
+          </label>
         </div>
       </div>
 
@@ -39,12 +45,10 @@
       <div id="content-header">
         <div id="breadcrumb"></div>
         <div id="toolbar">
+          <button id="btn-sidebar-toggle" title="Toggle sidebar" aria-label="Toggle sidebar">☰</button>
           <button id="btn-expand-all" title="Expand all sections">Expand all</button>
           <button id="btn-collapse-all" title="Collapse all sections">Collapse all</button>
-          <label id="provenance-toggle">
-            <input type="checkbox" id="show-provenance" checked>
-            Show DAC provenance
-          </label>
+          <button id="btn-print" title="Print / Save as PDF">🖨 Print</button>
         </div>
       </div>
       <div id="directive-content">
@@ -53,6 +57,7 @@
     </main>
   </div>
 
+  <div id="sidebar-overlay"></div>
   <script src="app.js"></script>
 </body>
 </html>

@@ -18,6 +18,7 @@
   let searchTerm = '';
   let searchMatches = [];
   let currentSearchIndex = -1;
+  let norwayFilterActive = false; // Track whether "Norway relevant" is active (for toggle)
 
   const ALL_DACS = ['DAC1', 'DAC2', 'DAC3', 'DAC4', 'DAC5', 'DAC6', 'DAC7', 'COVID'];
   const NORWAY_RELEVANT = ['DAC1', 'DAC2', 'DAC3', 'DAC6'];
@@ -203,8 +204,17 @@
     // Disclaimer
     const disclaimer = document.createElement('div');
     disclaimer.className = 'disclaimer-banner';
-    disclaimer.innerHTML = `<strong>Documentation tool only.</strong> ${data.meta.disclaimer}<br>
-      <strong>Consolidated version:</strong> ${data.meta.consolidatedDate} (version ${data.meta.consolidatedVersion})`;
+    disclaimer.innerHTML = `
+      <strong>Documentation tool — not an authentic legal instrument.</strong>
+      Only the text published in the <em>Official Journal of the European Union</em> is deemed authentic.
+      <br><br>
+      <strong>Source:</strong> EUR-Lex (<a href="https://eur-lex.europa.eu" target="_blank" rel="noopener">eur-lex.europa.eu</a>). © European Union, 2024.
+      Consolidated text reproduced under the <a href="https://eur-lex.europa.eu/content/legal-notice/legal-notice.html" target="_blank" rel="noopener">EUR-Lex reuse policy</a>
+      and Commission Decision 2011/833/EU on the reuse of Commission documents.
+      The content has been <strong>reformatted for web presentation</strong>; no substantive changes have been made to the legal text.
+      <br><br>
+      <strong>Consolidated version:</strong> ${data.meta.consolidatedDate} (version ${data.meta.consolidatedVersion})
+    `;
     container.appendChild(disclaimer);
 
     // Amendment legend
@@ -417,19 +427,31 @@
 
     // Show all
     document.getElementById('btn-show-all').addEventListener('click', () => {
+      norwayFilterActive = false;
+      document.getElementById('btn-norway-relevant').classList.remove('active');
       document.querySelectorAll('.dac-filter-btn').forEach(b => b.classList.add('active'));
       updateFilters();
     });
 
-    // Norway relevant
+    // Norway relevant — first click activates filter, second click resets to show all
     document.getElementById('btn-norway-relevant').addEventListener('click', () => {
-      document.querySelectorAll('.dac-filter-btn').forEach(b => {
-        if (NORWAY_RELEVANT.includes(b.dataset.dac)) {
-          b.classList.add('active');
-        } else {
-          b.classList.remove('active');
-        }
-      });
+      if (norwayFilterActive) {
+        // Second click: reset to show all
+        norwayFilterActive = false;
+        document.getElementById('btn-norway-relevant').classList.remove('active');
+        document.querySelectorAll('.dac-filter-btn').forEach(b => b.classList.add('active'));
+      } else {
+        // First click: activate Norway filter
+        norwayFilterActive = true;
+        document.getElementById('btn-norway-relevant').classList.add('active');
+        document.querySelectorAll('.dac-filter-btn').forEach(b => {
+          if (NORWAY_RELEVANT.includes(b.dataset.dac)) {
+            b.classList.add('active');
+          } else {
+            b.classList.remove('active');
+          }
+        });
+      }
       updateFilters();
     });
 
@@ -442,7 +464,31 @@
       document.querySelectorAll('.article-block, .annex-block').forEach(b => b.classList.add('collapsed'));
     });
 
-    // Provenance toggle
+    // Print / PDF
+    document.getElementById('btn-print').addEventListener('click', () => {
+      window.print();
+    });
+
+    // Sidebar toggle (hamburger) — works on all screen sizes
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    document.getElementById('btn-sidebar-toggle').addEventListener('click', () => {
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        // Mobile: use .open on the sidebar + overlay
+        const isOpen = sidebar.classList.toggle('open');
+        overlay.classList.toggle('visible', isOpen);
+      } else {
+        // Desktop: use body.sidebar-closed
+        document.body.classList.toggle('sidebar-closed');
+      }
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('visible');
+    });
+
+    // Provenance toggle (now in sidebar)
     document.getElementById('show-provenance').addEventListener('change', e => {
       document.body.classList.toggle('hide-provenance', !e.target.checked);
     });
